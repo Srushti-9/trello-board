@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { nanoid } from "nanoid";
     import draggableComponent from "vuedraggable";
-    import {ref} from "vue";
+    import {useLocalStorage} from "vue";
     import { Column, Task} from '~/types';
     import TrelloBoardTask from "./TrelloBoardTask.vue";
     import DragHandle from "./DragHandle.vue";
@@ -9,7 +9,7 @@
     import { nextTick } from 'vue'
 
     import { useKeyModifier } from "@vueuse/core";
-    const columns = ref<Column[]>([
+    const columns = useLocalStorage<Column[]>("trelloboard", [
         {
             id: nanoid(),
             title: "Backlog",
@@ -51,7 +51,21 @@
             title: "Complete",
             tasks: [],
         },
-    ]);
+    ],
+    {
+    serializer: {
+      read: (value) => {
+        return JSON.parse(value).map((column: Column) => {
+          column.tasks = column.tasks.map((task: Task) => {
+            task.createdAt = new Date(task.createdAt);
+            return task;
+          });
+          return column;
+        });
+      },
+      write: (value) => JSON.stringify(value),
+    },
+  });
 
     const alt = useKeyModifier("Alt")
 
