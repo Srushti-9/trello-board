@@ -59,7 +59,7 @@
         class="flex gap-4 overflow-x-auto items-start">
 
             <template #item="">
-                
+
             </template>
 
         </draggableComponent>
@@ -69,6 +69,7 @@
             <header class="font-bold mb-4">
                 {{ column.title }}
             </header>
+            <!-- Trello board task component -->
             <TrelloBoardTask v-for="task in column.tasks" :task="task" :key="task.id"
             >
             </TrelloBoardTask>
