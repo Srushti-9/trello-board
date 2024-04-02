@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { nanoid } from "nanoid";
     import draggableComponent from "vuedraggable";
-    import {useLocalStorage} from "vue";
+    import {useLocalStorage} from "@vueuse/core";
     import { Column, Task} from '~/types';
     import TrelloBoardTask from "./TrelloBoardTask.vue";
     import DragHandle from "./DragHandle.vue";
