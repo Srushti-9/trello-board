@@ -36,6 +36,32 @@ Tailwind CSS is a utility-first CSS framework that offers advantages like:
 - Consistent and maintainable styling across the project
 - Ability to easily customize and extend styles without writing custom CSS
 
+## Code Structure
+
+The project follows a modular structure for better organization and maintainability. Here's a brief overview of the main components:
+
+### `TrelloBoard.vue`
+
+This file represents the main Trello board component, which displays columns and tasks. It makes use of Vue 3 composition API and features draggable columns and tasks. Notable imports include nanoid for generating unique identifiers and vuedraggable for drag-and-drop functionality.
+
+### `TrelloBoardTask.vue`
+
+The `TrelloBoardTask.vue` component represents individual tasks within the Trello board. It receives a task object as a prop and renders the task title. This component also handles deletion of tasks.
+
+### `NewTask.vue`
+
+The `NewTask.vue` component is responsible for adding new tasks to the board. It provides a textarea where users can enter a task title. When the enter key is pressed or the textarea loses focus, the task is added to the corresponding column.
+
+### `DragHandle.vue`
+
+The `DragHandle.vue` component represents the drag handle used to drag and reorder tasks within a column. It's used in both the `TrelloBoard.vue` and `TrelloBoardTask.vue` components.
+
+### TypeScript and Tailwind CSS
+
+The project utilizes TypeScript for static typing and improved code maintainability. Tailwind CSS is used for rapid UI development, providing a utility-first approach to styling.
+
+Feel free to explore the codebase further to gain a deeper understanding of the project's implementation details.
+
 ## Getting Started
 
 ### Prerequisites
